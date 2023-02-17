@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -36,8 +38,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Tip()
 {
-Column (modifier = Modifier.padding(32.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp)
+    var input by remember {mutableStateOf("0")}
+
+Column (modifier = Modifier
+    .fillMaxSize()
+    .padding(top=250.dp),
+    horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.spacedBy(32.dp)
+
 )
 {
     Text(
@@ -45,6 +53,10 @@ Column (modifier = Modifier.padding(32.dp),
         fontSize= 24.sp,
         modifier = Modifier.align(Alignment.CenterHorizontally)
     )
+    TextField(value = input, onValueChange = {input=it} )
+    Button(onClick = { /*TODO*/ }) {
+        Text(text= "Calculate")
+    }
 }
 }
 
